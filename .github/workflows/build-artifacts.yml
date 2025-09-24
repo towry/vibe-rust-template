@@ -22,6 +22,10 @@ on:
 permissions:
   contents: write
 
+env:
+  CARGO_TERM_COLOR: always
+  BIN_NAME: vibe-rust
+
 jobs:
   build:
     name: Build & Upload Binaries
