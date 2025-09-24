@@ -22,16 +22,11 @@ on:
 permissions:
   contents: write
 
-env:
-  CARGO_TERM_COLOR: always
-  BIN_NAME: vibe-rust
-
 jobs:
   build:
     name: Build & Upload Binaries
     runs-on: ${{ matrix.os }}
     env:
-      BIN_NAME: ${{ inputs.bin_name || env.BIN_NAME }}
       VERSION: ${{ inputs.tag_name || github.event.release.tag_name }}
       UPLOAD_URL: ${{ inputs.upload_url || github.event.release.upload_url }}
     strategy:
@@ -52,15 +47,26 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Set binary name
+        shell: bash
+        run: |
+          if [ -n "${{ inputs.bin_name }}" ]; then
+            echo "BIN_NAME=${{ inputs.bin_name }}" >> $GITHUB_ENV
+            echo "Using input binary name: ${{ inputs.bin_name }}"
+          else
+            echo "BIN_NAME=${{ env.BIN_NAME }}" >> $GITHUB_ENV
+            echo "Using default binary name: ${{ env.BIN_NAME }}"
+          fi
+
       - name: Validate required inputs
         shell: bash
         run: |
-          if [ -z "${{ env.BIN_NAME }}" ]; then
-            echo "Error: bin_name is required but not provided"
-            echo "Please provide bin_name input that matches your Cargo.toml package name"
+          if [ -z "$BIN_NAME" ]; then
+            echo "Error: BIN_NAME was not set properly in previous step"
+            echo "This should not happen - please check the 'Set binary name' step"
             exit 1
           fi
-          echo "Using binary name: ${{ env.BIN_NAME }}"
+          echo "Using binary name: $BIN_NAME"
 
       - name: Install deps (Linux)
         if: runner.os == 'Linux'
