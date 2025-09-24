@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.4](https://github.com/towry/vibe-rust-template/compare/v0.2.3...v0.2.4) (2025-09-24)
+
+
+### Bug Fixes
+
+* duplicate workflow trigger ([21d18c4](https://github.com/towry/vibe-rust-template/commit/21d18c479ebf444dacd8361358b2fcd8b563f585))
+
 ## [0.2.3](https://github.com/towry/vibe-rust-template/compare/v0.2.2...v0.2.3) (2025-09-24)
 
 
