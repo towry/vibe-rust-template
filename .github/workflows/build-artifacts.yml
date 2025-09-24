@@ -107,7 +107,8 @@ jobs:
         shell: bash
         run: |
           version="${VERSION#v}" # strip leading v
-          staging="${BIN_NAME}-${version}-${{ matrix.target }}"
+          commit_short="${GITHUB_SHA:0:7}" # first 7 characters of commit hash
+          staging="${BIN_NAME}-${version}-${commit_short}-${{ matrix.target }}"
           mkdir -p "$staging"
           cp README.md "$staging/"
           # Use the actual binary name from Cargo.toml
