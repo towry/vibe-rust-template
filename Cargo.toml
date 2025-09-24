@@ -1,6 +1,6 @@
 [package]
 name = "vibe-rust"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Towry Wang <towry@users.noreply.github.com>"]
 edition = "2021"
 description = "Rust template for vibe coding"
