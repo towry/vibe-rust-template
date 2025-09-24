@@ -1,0 +1,24 @@
+[package]
+name = "vite-rust"
+version = "0.1.0"
+authors = ["Towry Wang <towry@users.noreply.github.com>"]
+edition = "2021"
+description = "Rust template for vibe coding"
+readme = "README.md"
+homepage = "https://github.com/towry"
+repository = "https://github.com/towry/vibe-rust-template"
+license-file = "LICENSE"
+keywords = ["template", "rust"]
+categories = ["rust"]
+publish = false
+
+[features]
+default = []
+
+[dependencies]
+
+[dev-dependencies]
+
+[profile.release]
+lto = true
+panic = "abort"
