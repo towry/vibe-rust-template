@@ -35,7 +35,7 @@ jobs:
       UPLOAD_URL: ${{ inputs.upload_url || github.event.release.upload_url }}
     strategy:
       matrix:
-        build: [linux, macos]
+        build: [linux, macos-arm]
         include:
           - build: linux
             os: ubuntu-20.04
