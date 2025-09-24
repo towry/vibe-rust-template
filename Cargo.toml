@@ -16,6 +16,7 @@ publish = false
 default = []
 
 [dependencies]
+chrono = "0.4"
 
 [dev-dependencies]
 
