@@ -2,6 +2,13 @@ name: "Rust Test Suite"
 
 on:
   push:
+    paths:
+      - 'src/**'
+      - 'Cargo.toml'
+      - 'Cargo.lock'
+      - '.github/workflows/rust.yml'
+      - 'rust-toolchain.toml'
+      - 'build.rs'
   pull_request:
 
 concurrency:
