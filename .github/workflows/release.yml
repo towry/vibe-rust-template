@@ -33,4 +33,3 @@ jobs:
     with:
       tag_name: ${{ needs.release_please.outputs.tag_name }}
       upload_url: ${{ needs.release_please.outputs.upload_url }}
-      bin_name: template

@@ -42,3 +42,14 @@ cargo build --release
 
 This project requires **conventional commits** (feat:, fix:, etc.) for automated
 releases. Push to `main` triggers the release workflow.
+
+## Workflow Configuration
+
+The build workflow requires:
+
+- **`bin_name`**: Must match your `Cargo.toml` package name (currently
+  `vibe-rust`)
+- Configure via:
+  - Repository Settings → Environments → Create environment → Add `BIN_NAME`
+    variable
+  - Or update `BIN_NAME` in `.github/workflows/build-artifacts.yml`

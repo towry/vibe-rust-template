@@ -1,5 +1,5 @@
 [package]
-name = "vite-rust"
+name = "vibe-rust"
 version = "0.1.1"
 authors = ["Towry Wang <towry@users.noreply.github.com>"]
 edition = "2021"
