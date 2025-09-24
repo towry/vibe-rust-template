@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/towry/vibe-rust-template/compare/v0.2.4...v0.3.0) (2025-09-24)
+
+
+### Features
+
+* change main.rs to print today's date ([65f4c0f](https://github.com/towry/vibe-rust-template/commit/65f4c0f896319f02f233e0ce7cb8b20dd27649d0))
+
 ## [0.2.4](https://github.com/towry/vibe-rust-template/compare/v0.2.3...v0.2.4) (2025-09-24)
 
 
