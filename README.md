@@ -1,7 +1,5 @@
 # Vibe Rust Template
 
-test3
-
 A lightweight, single-binary Rust template optimized for rapid development with
 automated CI/CD.
 
