@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/towry/vibe-rust-template/compare/v0.2.0...v0.2.1) (2025-09-24)
+
+
+### Bug Fixes
+
+* try release again ([bfaefef](https://github.com/towry/vibe-rust-template/commit/bfaefef2164f1259074b741bb52021397efd46ad))
+
 ## [0.2.0](https://github.com/towry/vibe-rust-template/compare/v0.1.1...v0.2.0) (2025-09-24)
 
 
