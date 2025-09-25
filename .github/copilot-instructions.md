@@ -16,12 +16,17 @@ automated releases, and cross-platform binary distribution.
 
 ### Testing
 
+**IMPORTANT: Always run rustfmt before committing or running tests.**
+
 ```bash
-# Run all tests (includes tests in modules and integration tests)
-cargo test --all-features --verbose
+# Format code (REQUIRED before committing/testing)
+cargo fmt --all
 
 # Run formatting check
 cargo fmt --all -- --check
+
+# Run all tests (includes tests in modules and integration tests)
+cargo test --all-features --verbose
 
 # Run linting with warnings as errors
 RUSTFLAGS="-D warnings" cargo clippy --workspace --all-targets --all-features --verbose
@@ -95,6 +100,36 @@ Tests follow standard Rust conventions:
 - Uses `default = []` feature set
 - Run tests with `--all-features` to ensure compatibility
 
+## Just Commands (Recommended)
+
+This project includes a `justfile` for convenient development commands:
+
+```bash
+# Show all available commands
+just help
+
+# Format code (REQUIRED before committing)
+just format
+
+# Check if code is formatted
+just format-check
+
+# Run linting
+just lint
+
+# Run tests
+just test
+
+# Format, lint, and test (recommended before committing)
+just check
+
+# Build release binary
+just build
+
+# Clean build artifacts
+just clean
+```
+
 ## Common Development Tasks
 
 ### Adding Dependencies
@@ -106,9 +141,11 @@ Tests follow standard Rust conventions:
 ### Creating a New Feature
 
 1. Use conventional commit: `feat: add new functionality`
-2. Organize code into appropriate modules following Rust conventions
-3. Place tests alongside the code they test or in integration tests
-4. Update README.md if it changes usage patterns
+2. Format your code before committing: `just format` or `cargo fmt --all`
+3. Run the full check suite: `just check` (format + lint + test)
+4. Organize code into appropriate modules following Rust conventions
+5. Place tests alongside the code they test or in integration tests
+6. Update README.md if it changes usage patterns
 
 ### Debugging Build Issues
 
