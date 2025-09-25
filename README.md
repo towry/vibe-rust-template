@@ -5,14 +5,14 @@ automated CI/CD.
 
 ## Features
 
-- **Single Binary**: Everything in `src/main.rs` - no complex project structure
+- **Single Binary**: Organized Rust project structure with proper module separation
 - **Automated Releases**: Uses conventional commits and release-please for
   semantic versioning
 - **Cross-Platform Builds**: Automatically builds Linux x86_64 and macOS ARM64
   binaries
 - **Optimized for Speed**: LTO and panic=abort for smaller, faster binaries
 - **Minimal Dependencies**: Clean slate - add only what you need
-- **Embedded Testing**: Tests live alongside code in main.rs
+- **Modular Testing**: Tests organized alongside their modules following Rust conventions
 - **GitHub Actions Ready**: Complete CI/CD pipeline with caching
 
 ## Quick Start
@@ -28,6 +28,34 @@ cargo test --all-features --verbose
 # Build optimized binary
 cargo build --release
 ```
+
+## Project Organization
+
+This template encourages proper Rust project structure following standard conventions:
+
+- **`src/main.rs`**: Entry point - keep it focused on initialization and CLI setup
+- **`src/lib.rs`**: Create this for shared library code and modules
+- **`src/modules/`**: Organize your features into logical modules
+- **Module files**: Use `mod.rs` for module directories or single `.rs` files
+- **Tests**: Place unit tests in the same files as the code they test, integration
+  tests in `tests/` directory
+
+### Example Structure
+```
+src/
+├── main.rs          # Entry point
+├── lib.rs           # Library root (optional)
+├── config/
+│   ├── mod.rs       # Configuration module
+│   └── settings.rs  # Settings functionality
+├── handlers/
+│   ├── mod.rs       # Handlers module
+│   └── api.rs       # API handlers
+└── utils/
+    └── mod.rs       # Utility functions
+```
+
+Start simple with `main.rs`, then refactor into modules as your project grows.
 
 ## Development
 

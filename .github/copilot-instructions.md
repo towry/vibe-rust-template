@@ -6,7 +6,7 @@ automated releases, and cross-platform binary distribution.
 
 ## Project Architecture
 
-- **Single binary crate**: All code lives in `src/main.rs` with embedded tests
+- **Single binary crate**: Organized with proper Rust module structure for maintainability
 - **Minimal dependencies**: Add dependencies incrementally as needed
 - **Release automation**: Uses Google's release-please for semantic versioning
   based on conventional commits, it handle Cargo.toml versioning and changelog,
@@ -17,7 +17,7 @@ automated releases, and cross-platform binary distribution.
 ### Testing
 
 ```bash
-# Run all tests (includes embedded tests in main.rs)
+# Run all tests (includes tests in modules and integration tests)
 cargo test --all-features --verbose
 
 # Run formatting check
@@ -51,6 +51,22 @@ The `.github/workflows/` follows a dependency chain:
 
 ## Project-Specific Conventions
 
+### Project Organization
+
+Follow standard Rust module organization patterns:
+
+- **`src/main.rs`**: Keep focused on program entry point and CLI setup
+- **`src/lib.rs`**: Create for shared library functionality (optional)
+- **Module structure**: Organize features into logical modules using `mod.rs` or single `.rs` files
+- **Tests**: Unit tests in same files, integration tests in `tests/` directory
+- **Documentation**: Use `//!` for module-level docs, `///` for item-level docs
+
+Example evolution:
+1. Start simple in `main.rs`
+2. Extract functions to modules as code grows
+3. Create `lib.rs` when you have reusable components
+4. Organize related functionality into module directories
+
 ### Binary Naming
 
 - Default binary name: `template` (from Cargo.toml)
@@ -67,10 +83,12 @@ panic = "abort"     # Smaller binaries, faster startup
 
 ### Test Patterns
 
-Tests are embedded directly in `src/main.rs` using:
+Tests follow standard Rust conventions:
 
-- Standard tests: `#[test]`
-- Expected panic tests: `#[test] #[should_panic(expected = "...")]`
+- **Unit tests**: `#[test]` functions in the same file as the code they test
+- **Integration tests**: Place in `tests/` directory for testing public API
+- **Expected panic tests**: `#[test] #[should_panic(expected = "...")]`
+- **Module organization**: Group related tests using `#[cfg(test)]` modules
 
 ### Cargo Features
 
@@ -88,8 +106,9 @@ Tests are embedded directly in `src/main.rs` using:
 ### Creating a New Feature
 
 1. Use conventional commit: `feat: add new functionality`
-2. Add tests directly in the same file when possible
-3. Update README.md if it changes usage patterns
+2. Organize code into appropriate modules following Rust conventions
+3. Place tests alongside the code they test or in integration tests
+4. Update README.md if it changes usage patterns
 
 ### Debugging Build Issues
 
