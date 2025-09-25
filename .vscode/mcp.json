@@ -11,7 +11,7 @@
     },
     "fetch": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-fetch"],
+      "args": ["-y", "mcp-fetch-server"],
       "type": "stdio"
     }
   }
