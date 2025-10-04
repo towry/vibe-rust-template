@@ -1,5 +1,6 @@
 use chrono::Local;
 
+// foo
 pub fn main() {
     let today = Local::now().format("%Y-%m-%d");
     println!("Today's date: {}", today);
