@@ -7,10 +7,6 @@ on:
         description: "Tag name (e.g. v1.2.3)"
         required: true
         type: string
-      upload_url:
-        description: "GitHub release upload_url"
-        required: true
-        type: string
       bin_name:
         description: "Binary name (must match Cargo.toml package name)"
         required: false
@@ -21,10 +17,6 @@ on:
       tag_name:
         description: "Tag name (e.g. v1.2.3)"
         required: true
-        type: string
-      upload_url:
-        description: "GitHub release upload_url"
-        required: false
         type: string
       bin_name:
         description: "Binary name (must match Cargo.toml package name)"
@@ -45,7 +37,6 @@ jobs:
     runs-on: ${{ matrix.os }}
     env:
       VERSION: ${{ inputs.tag_name || github.event.release.tag_name }}
-      UPLOAD_URL: ${{ inputs.upload_url || github.event.release.upload_url }}
     strategy:
       matrix:
         build: [linux, macos-arm]
@@ -114,11 +105,11 @@ jobs:
           echo "ASSET=$staging.tar.gz" >> $GITHUB_ENV
 
       - name: Upload asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: ncipollo/release-action@v1
         with:
-          upload_url: ${{ env.UPLOAD_URL }}
-          asset_path: ${{ env.ASSET }}
-          asset_name: ${{ env.ASSET }}
-          asset_content_type: application/octet-stream
+          tag: ${{ env.VERSION }}
+          artifacts: ${{ env.ASSET }}
+          allowUpdates: true
+          omitBodyDuringUpdate: true
+          omitNameDuringUpdate: true
+          omitPrereleaseDuringUpdate: true

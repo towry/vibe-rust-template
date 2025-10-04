@@ -32,4 +32,3 @@ jobs:
     uses: ./.github/workflows/build-artifacts.yml
     with:
       tag_name: ${{ needs.release_please.outputs.tag_name }}
-      upload_url: ${{ needs.release_please.outputs.upload_url }}
