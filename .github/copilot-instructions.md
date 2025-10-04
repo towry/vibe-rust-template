@@ -4,6 +4,8 @@ This is a **single-binary Rust project** optimized for rapid development with
 automated CI/CD. The project emphasizes simplicity, conventional commits for
 automated releases, and cross-platform binary distribution.
 
+**IMPORTANT: Always run `cargo fmt` before committing or running tests.**
+
 ## Project Architecture
 
 - **Single binary crate**: Organized with proper Rust module structure for maintainability
@@ -15,8 +17,6 @@ automated releases, and cross-platform binary distribution.
 ## Key Development Workflows
 
 ### Testing
-
-**IMPORTANT: Always run rustfmt before committing or running tests.**
 
 ```bash
 # Format code (REQUIRED before committing/testing)
