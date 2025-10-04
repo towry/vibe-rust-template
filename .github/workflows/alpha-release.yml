@@ -11,6 +11,9 @@ on:
       - '.github/workflows/alpha-release.yml'
   workflow_dispatch:
 
+# Prevent running on release-please commits and version tags
+# This ensures alpha releases only happen for actual code changes
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -22,6 +25,8 @@ jobs:
   create_alpha_release:
     name: Create Alpha Release
     runs-on: ubuntu-latest
+    # Skip if commit message starts with "chore(main): release" (release-please)
+    if: ${{ !startsWith(github.event.head_commit.message, 'chore(main): release') }}
     outputs:
       tag_name: ${{ steps.generate_tag.outputs.tag_name }}
     steps:
@@ -59,4 +64,5 @@ jobs:
     name: Build Artifacts for Alpha Release
     needs: create_alpha_release
     uses: ./.github/workflows/build-artifacts.yml
+    with:
       tag_name: ${{ needs.create_alpha_release.outputs.tag_name }}
