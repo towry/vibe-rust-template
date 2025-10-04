@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.4.0](https://github.com/towry/vibe-rust-template/compare/v0.3.0...v0.4.0) (2025-10-04)
+
+
+### Features
+
+* enforce rustfmt and add justfile with format/lint commands ([#16](https://github.com/towry/vibe-rust-template/issues/16)) ([78016ed](https://github.com/towry/vibe-rust-template/commit/78016edeb68800a51d3c7e2696b521e1285acdd1))
+* setup VSCode MCP configuration with context7, playwright, and fetch servers ([#19](https://github.com/towry/vibe-rust-template/issues/19)) ([ee38c9f](https://github.com/towry/vibe-rust-template/commit/ee38c9f71c6338923774a72d9e194b1763b8fa1b))
+
+
+### Bug Fixes
+
+* workflow ([3d9593e](https://github.com/towry/vibe-rust-template/commit/3d9593ef880132a4169882ede96541cd0983173f))
+* workflow name for prerelease ([76ff2bd](https://github.com/towry/vibe-rust-template/commit/76ff2bddf7ddd36023b27550dc779abe7e0675d2))
+* workflow rust ([51b4ff5](https://github.com/towry/vibe-rust-template/commit/51b4ff5dc85ff857554e9ea57fb1da159b543976))
+
 ## [0.3.0](https://github.com/towry/vibe-rust-template/compare/v0.2.4...v0.3.0) (2025-09-24)
 
 
