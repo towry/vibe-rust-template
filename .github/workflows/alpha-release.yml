@@ -26,7 +26,7 @@ jobs:
     name: Create Alpha Release
     runs-on: ubuntu-latest
     # Skip if commit message starts with "chore(main): release" (release-please)
-    if: ${{ !startsWith(github.event.head_commit.message, 'chore(main): release') }}
+    if: "!startsWith(github.event.head_commit.message, 'chore(main): release')"
     outputs:
       tag_name: ${{ steps.generate_tag.outputs.tag_name }}
     steps:
