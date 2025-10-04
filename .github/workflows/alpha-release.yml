@@ -1,4 +1,4 @@
-name: "Alpha Release"
+name: "Pre Release"
 
 on:
   push:
@@ -22,8 +22,8 @@ permissions:
   contents: write
 
 jobs:
-  create_alpha_release:
-    name: Create Alpha Release
+  create_pre_release:
+    name: Create Pre Release
     runs-on: ubuntu-latest
     # Skip if commit message starts with "chore(main): release" (release-please)
     if: "!startsWith(github.event.head_commit.message, 'chore(main): release')"
@@ -61,8 +61,8 @@ jobs:
           draft: false
 
   build_artifacts:
-    name: Build Artifacts for Alpha Release
-    needs: create_alpha_release
+    name: Build Artifacts for Pre Release
+    needs: create_pre_release
     uses: ./.github/workflows/build-artifacts.yml
     with:
-      tag_name: ${{ needs.create_alpha_release.outputs.tag_name }}
+      tag_name: ${{ needs.create_pre_release.outputs.tag_name }}
