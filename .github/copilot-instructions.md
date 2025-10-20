@@ -159,6 +159,7 @@ just clean
 - `CODE_OF_CONDUCT.md`: Standard contributor covenant
 - `target/`: Standard Rust build artifacts, heavily cached in CI
 - `.github/FUNDING.yml`: GitHub Sponsors configuration
+- `docs/`: Place for extended documentation if needed
 
 ## External Integrations
 
@@ -168,6 +169,11 @@ just clean
   artifacts
 - **Cross-compilation**: Handles Linux and macOS builds automatically on release
 
-When working on this project, prioritize simplicity and maintainability. The
+## Rules
+
+- When working on this project, prioritize simplicity and maintainability. The
 structure is designed for rapid iteration while maintaining production-ready
 CI/CD practices.
+- If config file is needed, prefer using `toml` format, and also use `XDG_CONFIG_HOME` variable, so that it will be easy for testing and cross-platform compatibility.
+
+
